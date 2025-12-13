@@ -1,0 +1,48 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.loginForm {
+    background-color: rgb(44, 10, 10);
+    border-radius: 1em;
+    box-shadow: 1em 1em 1em rgba(137, 137, 137, 0.578);
+    padding: 1.5em;
+    margin: 0.5em;
+    width: 50vh;
+    color: white;
+
+    section {
+        margin: 0.7em 0;
+
+        label:not(:last-child){
+            display: block;
+            color: aliceblue;
+        }
+
+        input[type=text],input[type=password] {
+            width: 100%;
+            border-radius: 0.5em;
+            padding: 0.5em;
+            box-sizing: border-box;
+        }
+
+        button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.5em;
+            border-radius: 0.5em;
+            background-color: rgb(157, 157, 252);
+            font-size: 1em;
+        }
+
+        button[disabled] {
+            background-color: rgb(95, 95, 133);
+            color: aliceblue;
+        }
+    }
+
+}
+
