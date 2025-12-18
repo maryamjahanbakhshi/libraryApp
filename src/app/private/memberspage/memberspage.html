@@ -28,32 +28,33 @@
 </table>
 }
 @else {
-    <form (ngSubmit)="M_Save()">
-        <div>
-            <label for="id">شناسه</label>
-            <input [(ngModel)]="ItemM.id" type="number" name="id" id="id" placeholder="شناسه">
-        </div>
-        <div>
-            <label for="fName">نام</label>
-            <input [(ngModel)]="ItemM.fName" type="text" name="fName" id="fName" placeholder="نام">
-        </div>
-        <div>
-            <label for="lName">نام خانوادگی</label>
-            <input [(ngModel)]="ItemM.lName" type="text" name="lName" id="lName" placeholder="نام خانوادگی ">
-        </div>
-        <div>
-            <label for="phone">تلفن</label>
-            <input [(ngModel)]="ItemM.phone" type="text" name="phone" id="phone" placeholder="تلفن">
-        </div>
-        <div>
-            <label for="email">ایمیل</label>
-            <input [(ngModel)]="ItemM.email" type="email" name="email" id="email" placeholder="ایمیل">
-        </div>
-        <div>
-            <button class="primery" type="button" (click)="checkNull()">تایید</button>
-            <button class="primery" type="button" (click)="M_cancel()">انصراف</button>
-        </div>
-        <div>{{message}}</div>
-
-    </form>
+<form (ngSubmit)="M_Save()">
+    <div>
+        <label for="id">شناسه</label>
+        <input [(ngModel)]="ItemM.id" type="number" name="id" id="id" placeholder="شناسه">
+    </div>
+    <div>
+        <label for="fName">نام</label>
+        <input [(ngModel)]="ItemM.fName" type="text" name="fName" id="fName" placeholder="نام">
+    </div>
+    <div>
+        <label for="lName">نام خانوادگی</label>
+        <input [(ngModel)]="ItemM.lName" type="text" name="lName" id="lName" placeholder="نام خانوادگی ">
+    </div>
+    <div>
+        <label for="phone">تلفن</label>
+        <input [(ngModel)]="ItemM.phone" type="text" name="phone" id="phone" placeholder="تلفن">
+    </div>
+    <div>
+        <label for="email">ایمیل</label>
+        <input [(ngModel)]="ItemM.email" type="email" name="email" id="email" placeholder="ایمیل">
+    </div>
+    <div>
+        <button class="primery" type="button" (click)="checkNull()">تایید</button>
+        <button class="primery" type="button" (click)="M_cancel()">انصراف</button>
+    </div>
+    @if(message!=''){
+    <div class="alert">{{message}}</div>
+    }
+</form>
 }

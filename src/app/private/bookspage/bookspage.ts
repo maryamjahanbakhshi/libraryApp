@@ -11,11 +11,18 @@ import { FormsModule } from '@angular/forms';
 export class Bookspage implements OnInit {
 
   Save() {
-    this.bookservice.Add(this.ItemB);
-    this.ItemB={id:0,titel:'',auther:'',publisher:'',price:0}
+    if (this.state == 'Add') {
+      this.bookservice.Add(this.ItemB);
+      //this.ItemB={id:0,titel:'',auther:'',publisher:'',price:0} 
+    }
+     else if (this.state == 'Remove') {
+      this.bookservice.Remove(this.ItemB);
+    }
+    else if (this.state == 'Edit') {
+      this.bookservice.Edit(this.ItemB);
+    }
     this.DataRefresh();
-    this.state='list';
-
+    this.state = 'list';
   }
 
   ngOnInit(): void {
@@ -24,9 +31,9 @@ export class Bookspage implements OnInit {
 
   state: string = 'list';
 
-  data: BoolItem[] = [];
+  data: BookItem[] = [];
 
-  ItemB: BoolItem = {
+  ItemB: BookItem = {
     id: 0,
     titel: '',
     auther: '',
@@ -42,14 +49,25 @@ export class Bookspage implements OnInit {
 
   add() {
     this.state = "Add";
+    this.ItemB = { id: 0, titel: '', auther: '', publisher: '', price: 0 };//creat new object .its true
+  }
+
+  editB(book: BookItem) {
+    this.ItemB = { ...book };
+    this.state = 'Edit';
   }
 
   cancel() {
     this.state = 'list';
   }
+
+  removeB(book:BookItem){
+    this.ItemB={...book};
+    this.state='Remove';
+  }
 }
 
-export interface BoolItem {
+export interface BookItem {
   id: number;
   titel: string;
   auther: string;

@@ -20,8 +20,10 @@
             <td>{{item.auther}}</td>
             <td>{{item.publisher}}</td>
             <td>{{item.price}}</td>
-            <td class="primery">ویرایش</td>
-            <td class="primery">حذف</td>
+            <td>
+                <button class="primery" (click)="editB(item)">ویرایش</button>
+                <button class="primery" (click)="removeB(item)">حذف</button>
+            </td>
         </tr>
         }
     </tbody>
@@ -30,33 +32,43 @@
 
 @else {
 
-    <form (ngSubmit)="Save()">
-        <div>
-            <label for="id">شناسه</label>
-            <input [(ngModel)]="ItemB.id" type="number" name="id" id="id" placeholder="شناسه">
-        </div>
-        <div>
-            <label for="titel">عنوان</label>
-            <input [(ngModel)]="ItemB.titel" type="text" name="titel" id="titel" placeholder="عنوان">
-        </div>
-        <div>
-            <label for="auther">نویسنده</label>
-            <input [(ngModel)]="ItemB.auther" type="text" name="auther" id="auther" placeholder="نویسنده">
-        </div>
-        <div>
-            <label for="publisher">ناشر</label>
-            <input [(ngModel)]="ItemB.publisher" type="text" name="publisher" id="publisher" placeholder="ناشر">
-        </div>
-        <div>
-            <label for="price">قیمت</label>
-            <input [(ngModel)]="ItemB.price" type="number" name="price" id="price" placeholder="قیمت">
-        </div>
-        <div>
-            <button class="primery" type="submit">تایید</button>
-            <button class="primery" type="button" (click)="cancel()">انصراف</button>
-        </div>
-        <div></div>
+<form (ngSubmit)="Save()">
+    @if(state=='Remove'){
+    <div class="alert">
+        آیا از حذف این کتاب اطمینان دارید ؟؟
+    </div>
+    }
+    <div>
+        <label for="id">شناسه</label>
+        <input [disabled]="state=='Edit'|| state=='Remove'" [(ngModel)]="ItemB.id" name="id" id="id" placeholder="شناسه">
+    </div>
 
-    </form>
+    <div>
+        <label for="titel">عنوان</label>
+        <input [disabled]="state=='Remove'" [(ngModel)]="ItemB.titel" type="text" name="titel" id="titel"
+            placeholder="عنوان">
+    </div>
+    <div>
+        <label for="auther">نویسنده</label>
+        <input [disabled]="state=='Remove'" [(ngModel)]="ItemB.auther" type="text" name="auther" id="auther"
+            placeholder="نویسنده">
+    </div>
+    <div>
+        <label for="publisher">ناشر</label>
+        <input [disabled]="state=='Remove'" [(ngModel)]="ItemB.publisher" type="text" name="publisher" id="publisher"
+            placeholder="ناشر">
+    </div>
+    <div>
+        <label for="price">قیمت</label>
+        <input [disabled]="state=='Remove'" [(ngModel)]="ItemB.price" type="number" name="price" id="price"
+            placeholder="قیمت">
+    </div>
+    <div>
+        <button class="primery" type="submit">تایید</button>
+        <button class="primery" type="button" (click)="cancel()">انصراف</button>
+    </div>
+    <div></div>
+
+</form>
 
 }
