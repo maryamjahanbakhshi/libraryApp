@@ -20,8 +20,10 @@
             <td>{{item.lName}}</td>
             <td>{{item.phone}}</td>
             <td>{{item.email}}</td>
-            <td class="primery">ویرایش</td>
-            <td class="primery">حذف</td>
+            <td>
+                <button class="primery" (click)="M_Edit(item)">ویرایش</button>
+                <button class="primery" (click)="M_Remove(item)">حذف</button>
+            </td>
         </tr>
         }
     </tbody>
@@ -50,11 +52,9 @@
         <input [(ngModel)]="ItemM.email" type="email" name="email" id="email" placeholder="ایمیل">
     </div>
     <div>
-        <button class="primery" type="button" (click)="checkNull()">تایید</button>
+        <button class="primery" type="submit" >تایید</button>
         <button class="primery" type="button" (click)="M_cancel()">انصراف</button>
     </div>
-    @if(message!=''){
-    <div class="alert">{{message}}</div>
-    }
+    <!-- <div class="alert">{{message}}</div> -->
 </form>
 }

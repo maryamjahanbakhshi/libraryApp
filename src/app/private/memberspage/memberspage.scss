@@ -12,29 +12,22 @@ table {
     width: 100%;
     border-collapse: collapse;
     padding: 0.5em;
-
-    th,
-    td {
+    th,td {
         padding: 0.5em;
     }
-
     th {
         text-align: right;
         border-top: solid 0.1em rgb(245, 160, 160);
         background-color: rgb(98, 25, 25);
         color: white;
     }
-
     tr {
         border-bottom: solid 0.1em rgb(245, 160, 160);
     }
-
     tr:nth-of-type(2n) {
         background-color: rgb(208, 208, 252);
     }
 }
-
-
 
 div {
     align-items: center;

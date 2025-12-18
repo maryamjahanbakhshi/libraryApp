@@ -15,20 +15,28 @@ export class Memberspage implements OnInit {
   message: string = '';
 
   M_Save() {
-    this.memberservice.mAdd(this.ItemM);
-    this.ItemM = { id: 0, fName: '', lName: '', phone: '', email: '', }
+    if (this.Mstat == 'mAdd') {
+      this.memberservice.mAdd(this.ItemM);
+      // this.ItemM = { id: 0, fName: '', lName: '', phone: '', email: '', }
+    }
+    else if (this.Mstat == 'mEdit') {
+      this.memberservice.mEdit(this.ItemM)
+    }
+    else if (this.Mstat == 'mRemove') {
+      this.memberservice.mRemove(this.ItemM)
+    }
     this.M_DataRefresh();
     this.Mstat = 'mList';
   }
 
-  checkNull() {
-    if (this.ItemM.fName == '' || this.ItemM.lName == ''||this.ItemM.id) {
+ /* checkNull() {
+    if (this.ItemM.fName == '' || this.ItemM.lName == '' || this.ItemM.id) {
       this.message = 'لطفا فیلد نام یا نام خانوادگی یا شناسه خود را وارد کنید ';
     }
     else {
       this.M_Save();
     }
-  }
+  }*/
 
   ngOnInit(): void {
     this.M_DataRefresh()
@@ -53,6 +61,17 @@ export class Memberspage implements OnInit {
 
   M_add() {
     this.Mstat = "mAdd";
+    this.ItemM = { id: 0, fName: '', lName: '', phone: '', email: '', }
+  }
+
+  M_Edit(member: memberitem) {
+    this.ItemM = { ...member };
+    this.Mstat = 'mEdit';
+  }
+
+  M_Remove(member: memberitem) {
+    this.ItemM = { ...member };
+    this.Mstat = 'mRemove';
   }
 
   M_cancel() {

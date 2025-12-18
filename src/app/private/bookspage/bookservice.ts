@@ -26,10 +26,10 @@ export class Bookservice {
     }
   }
   Remove(item: BookItem) {
-    //this.data = this.data.filter(b => b.id != item.id)
-    const ind = this.data.findIndex(b => b.id = item.id)
+    this.data = this.data.filter(b => b.id != item.id)
+   /* const ind = this.data.findIndex(b => b.id = item.id)
     if (ind != -1) {
       this.data=this.data.slice(ind,1)
-    }
+    }*/
   }
 }
